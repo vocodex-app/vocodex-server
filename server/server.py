@@ -24,7 +24,7 @@ def get_music_based_on_keywords():
     emotion = predict_text_emotion(text=context)
     data = fetch_music_based_on_emotion(emotion)
 
-    return jsonify(data)
+    return jsonify(data), 200, {'Content-Type': 'application/json'}
 
 
 if __name__ == '__main__':
