@@ -11,8 +11,8 @@ collection = 'musicRecommendation'
 
 def get_song_with_emotion(emotion) -> str:
     # fetch song which has field with given emotion
-    docs = db.collection(collection).where(u'emotion', u'==', emotion).stream()
-    # get song as json
+    docs = db.collection(collection).filter(u'emotion', u'==', emotion).stream()
+    # get random song from the list
     song_id = random.choice([doc.id for doc in docs])
     song = db.collection(collection).document(song_id).get().to_dict()
     return song
